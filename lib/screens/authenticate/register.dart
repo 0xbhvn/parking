@@ -60,7 +60,9 @@ class _RegisterState extends State<Register> {
                 TextFormField(
                   obscureText: true,
                   onChanged: (val) {
-                    setState(() => email = val);
+                    setState(() => password = val);
+                    print(email);
+                    print(password);
                   },
                   validator: (val) =>
                       val.length < 6 ? 'Password too short.' : null,
@@ -70,23 +72,24 @@ class _RegisterState extends State<Register> {
                 ),
                 SizedBox(height: 20.0),
                 RaisedButton(
-                    onPressed: () async {
-                      if (_formKey.currentState.validate()) {
-                        dynamic result = await _auth
-                            .registerWithEmailAndPassword(email, password);
-
-                        if (result == null) {
-                          setState(() {
-                            error = 'Invalid input.';
-                          });
-                        }
+                  onPressed: () async {
+                    print(email);
+                    print(password);
+                    if (_formKey.currentState.validate()) {
+                      dynamic result = await _auth.registerWithEmailAndPassword(
+                          email, password);
+                      if (result == null) {
+                        setState(() {
+                          error = 'Invalid input.';
+                        });
                       }
-                    },
-                    color: Colors.black,
-                    child: Text(
-                      'Register',
-                      style: TextStyle(color: Colors.white),
-                    ),
+                    }
+                  },
+                  color: Colors.black,
+                  child: Text(
+                    'Register',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
                 SizedBox(height: 20.0),
                 Text(

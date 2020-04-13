@@ -60,7 +60,7 @@ class _SignInState extends State<SignIn> {
                 TextFormField(
                   obscureText: true,
                   onChanged: (val) {
-                    setState(() => email = val);
+                    setState(() => password = val);
                   },
                   validator: (val) =>
                       val.length < 6 ? 'Password too short.' : null,
@@ -72,9 +72,8 @@ class _SignInState extends State<SignIn> {
                 RaisedButton(
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
-                        dynamic result = await _auth
-                            .signInWithEmailAndPassword(email, password);
-
+                        dynamic result = await _auth.signInWithEmailAndPassword(
+                            email, password);
                         if (result == null) {
                           setState(() {
                             error = 'Invalid input.';
