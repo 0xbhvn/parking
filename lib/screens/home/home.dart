@@ -1,5 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:parking/models/parking.dart';
 import 'package:parking/services/auth.dart';
 import 'package:parking/services/database.dart';
 import 'package:parking/screens/home/parking_list.dart';
@@ -10,7 +10,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<QuerySnapshot>.value(
+    return StreamProvider<List<Parking >>.value(
       value: DatabaseService().parking,
       child: Container(
         child: SafeArea(
