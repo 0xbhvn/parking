@@ -15,6 +15,8 @@ class _RegisterState extends State<Register> {
 
   String email = '';
   String password = '';
+  String name = '';
+  String vehicleNumber = '';
   String error = '';
 
   @override
@@ -48,6 +50,17 @@ class _RegisterState extends State<Register> {
               children: <Widget>[
                 TextFormField(
                   onChanged: (val) {
+                    setState(() => name = val);
+                  },
+                  validator: (val) =>
+                  val.isEmpty ? 'Name cannot be empty.' : null,
+                  decoration: InputDecoration(
+                    hintText: 'Name',
+                  ),
+                ),
+                SizedBox(height: 20.0),
+                TextFormField(
+                  onChanged: (val) {
                     setState(() => email = val);
                   },
                   validator: (val) =>
@@ -69,14 +82,22 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
                 SizedBox(height: 20.0),
+                TextFormField(
+                  onChanged: (val) {
+                    setState(() => vehicleNumber = val);
+                  },
+                  validator: (val) =>
+                  val.isEmpty ? 'Vehicle Number cannot be empty.' : null,
+                  decoration: InputDecoration(
+                    hintText: 'Vehicle Number',
+                  ),
+                ),
+                SizedBox(height: 20.0),
                 RaisedButton(
                   onPressed: () async {
-                    print(email);
-                    print(password);
-
                     if (_formKey.currentState.validate()) {
                       dynamic result = await _auth.registerWithEmailAndPassword(
-                          email, password);
+                          name, email, password, vehicleNumber);
 
                       if (result == null) {
                         setState(() {
