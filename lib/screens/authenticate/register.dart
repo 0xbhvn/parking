@@ -61,8 +61,6 @@ class _RegisterState extends State<Register> {
                   obscureText: true,
                   onChanged: (val) {
                     setState(() => password = val);
-                    print(email);
-                    print(password);
                   },
                   validator: (val) =>
                       val.length < 6 ? 'Password too short.' : null,
@@ -75,9 +73,11 @@ class _RegisterState extends State<Register> {
                   onPressed: () async {
                     print(email);
                     print(password);
+
                     if (_formKey.currentState.validate()) {
                       dynamic result = await _auth.registerWithEmailAndPassword(
                           email, password);
+
                       if (result == null) {
                         setState(() {
                           error = 'Invalid input.';

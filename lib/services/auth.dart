@@ -17,9 +17,11 @@ class AuthService {
     try {
       AuthResult result = await _auth.signInAnonymously();
       FirebaseUser user = result.user;
+
       return user;
     } catch (e) {
       print(e.toString());
+
       return null;
     }
   }
@@ -29,10 +31,13 @@ class AuthService {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
-      await DatabaseService(uid: user.uid).updateUserData('Bhaven Kakade', 'MH04JV7996');
+      await DatabaseService(uid: user.uid)
+          .updateUserData('Bhaven Kakade', 'MH47AC7996');
+
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
+
       return null;
     }
   }
@@ -42,9 +47,11 @@ class AuthService {
       AuthResult result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
+
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
+
       return null;
     }
   }
@@ -54,6 +61,7 @@ class AuthService {
       return await _auth.signOut();
     } catch (e) {
       print(e.toString());
+
       return null;
     }
   }

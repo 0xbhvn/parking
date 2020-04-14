@@ -2,9 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DatabaseService {
   final String uid;
-  DatabaseService({ this.uid });
+  DatabaseService({this.uid});
 
-  final CollectionReference parkingCollection = Firestore.instance.collection('parking');
+  final CollectionReference parkingCollection =
+      Firestore.instance.collection('parking');
 
   Future<void> updateUserData(String name, String vehicleNumber) async {
     return await parkingCollection.document(uid).setData({
@@ -13,4 +14,7 @@ class DatabaseService {
     });
   }
 
+  Stream<QuerySnapshot> get parking {
+    return parkingCollection.snapshots();
+  }
 }
