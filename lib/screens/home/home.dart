@@ -10,7 +10,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<List<Parking >>.value(
+    return StreamProvider<List<Parking>>.value(
       value: DatabaseService().parking,
       child: Container(
         child: SafeArea(

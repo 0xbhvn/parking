@@ -13,9 +13,9 @@ class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
+  String name = '';
   String email = '';
   String password = '';
-  String name = '';
   String vehicleNumber = '';
   String error = '';
 
@@ -47,13 +47,13 @@ class _RegisterState extends State<Register> {
             key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
+              children: [
                 TextFormField(
                   onChanged: (val) {
                     setState(() => name = val);
                   },
                   validator: (val) =>
-                  val.isEmpty ? 'Name cannot be empty.' : null,
+                      val.isEmpty ? 'Name cannot be empty.' : null,
                   decoration: InputDecoration(
                     hintText: 'Name',
                   ),
@@ -87,7 +87,7 @@ class _RegisterState extends State<Register> {
                     setState(() => vehicleNumber = val);
                   },
                   validator: (val) =>
-                  val.isEmpty ? 'Vehicle Number cannot be empty.' : null,
+                      val.isEmpty ? 'Vehicle Number cannot be empty.' : null,
                   decoration: InputDecoration(
                     hintText: 'Vehicle Number',
                   ),
