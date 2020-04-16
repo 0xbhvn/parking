@@ -28,10 +28,10 @@ class DatabaseService {
 
   UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
     return UserData(
-      uid: uid;
-      name: snapshot.data['name'];
-      vehicleNumber: snapshot.data['vehicleNumber'];
-    ),
+      uid: uid,
+      name: snapshot.data['name'],
+      vehicleNumber: snapshot.data['vehicleNumber'],
+    );
   }
 
   Stream<List<Parking>> get parking {
