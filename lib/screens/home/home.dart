@@ -34,7 +34,6 @@ class Home extends StatelessWidget {
                     label: Text('Logout'))
               ],
             ),
-            body: ParkingList(),
           ),
         ),
       ),
